@@ -1,0 +1,11 @@
+<div class = "sign_in">
+  Already a member. Please sign in :-
+
+  <%#= link_to "Sign In", 'javascript:void(0)', :id => "sign_in", :class => "member_sign_in" %>
+  <%= link_to "Sign In", {:controller => "sessions", :action => "new"} %>
+  Or
+
+  <%= link_to "Sign Up", {:controller => "users", :action => "new"} %>
+
+</div>
+
