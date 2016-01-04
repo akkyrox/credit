@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   PHONE_REGEX = /\A(\+\d{1,3}[- ]?)?\d{10}\Z/i
 
+  has_many :shared_phones
   validates_presence_of :email, :format => EMAIL_REGEX
   validates_presence_of :phone, :format => PHONE_REGEX
   validates_length_of :password, :in => 6..20, :on => :create
