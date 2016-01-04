@@ -16,6 +16,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def share_phone
+    debugger
+    @user = User.find_by_id(params[:id])
+
+    if (SharedPhone.all.collect(&:phone).include?(params[:phone]) or User.all.collect(&:phone).include?(params[:phone]))
+      @user.shared_phones.create({:phone => params[:phone], :status => false, :credit_given => 0})
+      @output = {"status" => "fail", "message" => "Phone number not shared"}
+    else
+      @user.shared_phones.create({:phone => params[:phone], :status => true, :credit_given => 3})
+      @output = {"status" => "success", "message" => "Phone number shared"}
+    end
+    render :json => @output.to_json
+  end
+
   def show
     @user = User.find_by_id(params[:id])
   end

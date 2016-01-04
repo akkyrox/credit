@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :password_resets
+
+  get "/share_phone_api" => "users#share_phone"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
